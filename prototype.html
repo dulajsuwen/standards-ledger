@@ -1,0 +1,144 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Standards Ledger</title>
+<meta name="description" content="Every AASB, IFRS, IAS, IFRIC, SIC and sustainability standard in one searchable reference, with the Australian and international numbering mapped side by side.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;1,600&display=swap">
+<link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/prototype.css"></head><body><div class="workspace-bar"><a href="prototype.html"><b class="brand-icon">SL</b> The Standards Ledger</a><span>AUSTRALIAN REPORTING / REFERENCE WORKSPACE</span><small>Design preview</small></div>
+
+<!-- ============================== MASTHEAD ============================== -->
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <div class="eyebrow">YOUR STANDARDS, CONNECTED</div><h1>Clarity for every<br><span class="rule-mark">reporting decision.</span></h1>
+      <p>Explore accounting and sustainability standards, understand what is changing, and connect international requirements with Australian reporting.</p>
+    </div>
+    <div class="masthead-meta">
+      <span class="stamp">Verified <b id="verified-date">&mdash;</b></span>
+      <span class="stamp"><b id="total-count">0</b> pronouncements</span>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">Theme</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= COMMAND BAR ============================ -->
+<div class="command">
+  <div class="command-in">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+      </svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false"
+             aria-label="Search standards by number, topic or phrase"
+             placeholder="Search &ldquo;leases&rdquo;, &ldquo;AASB 1058&rdquo;, &ldquo;expected credit loss&rdquo;&hellip;">
+      <span class="kbd-hint">/</span>
+    </div>
+    <div class="views" role="tablist" aria-label="View">
+      <button class="view-tab" role="tab" id="tab-library"  aria-selected="true"  data-view="library">Library</button>
+      <button class="view-tab" role="tab" id="tab-timeline" aria-selected="false" data-view="timeline">Effective dates</button>
+      <button class="view-tab" role="tab" id="tab-bridge"   aria-selected="false" data-view="bridge">AASB &harr; IFRS</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================================ SHELL =============================== -->
+<main class="shell">
+
+  <aside class="rail" id="rail">
+    <div class="rail-group">
+      <h4 class="filter-title">Refine your library</h4><h3>Framework</h3>
+      <div class="rail-list" id="family-filters"></div>
+    </div>
+    <div class="rail-group">
+      <h3>Status</h3>
+      <div class="rail-list" id="status-filters"></div>
+    </div>
+    <div class="rail-group">
+      <h3>Topic</h3>
+      <details><summary>Browse topics</summary><div class="chip-cloud" id="topic-filters"></div></details>
+    </div>
+    <button class="rail-reset" id="reset" type="button">Clear all filters</button>
+  </aside>
+
+  <section class="content"><div class="section-heading"><div class="eyebrow">THE REFERENCE DESK</div><h2 id="section-title">Standards library</h2><p id="section-description">Find the requirements. Understand the context. Go straight to the source.</p></div>
+
+    <!-- LIBRARY -->
+    <div id="view-library" role="tabpanel" aria-labelledby="tab-library">
+      <div class="result-bar">
+        <span class="result-count"><b id="shown-count">0</b> of <span id="all-count">0</span> shown</span>
+        <span class="sort-note">Grouped by framework &middot; select a row for detail</span>
+      </div>
+      <div class="ledger" id="ledger"></div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div id="view-timeline" role="tabpanel" aria-labelledby="tab-timeline" hidden>
+      <div class="result-bar">
+        <span class="result-count">What changes, and when</span>
+        <span class="sort-note">Standards with a dated change ahead of or behind them</span>
+      </div>
+      <div class="tl" id="timeline"></div>
+    </div>
+
+    <!-- BRIDGE -->
+    <div id="view-bridge" role="tabpanel" aria-labelledby="tab-bridge" hidden>
+      <div class="bridge-intro">
+        <p><strong>Australia mirrors the international text, then adds to it.</strong> The AASB issues each IFRS Accounting Standard as an Australian equivalent with the same number &mdash; IFRS 15 becomes AASB 15. Standards inherited from the old IASC keep their IAS number internationally but are renumbered in the 100 series here, so IAS 1 is AASB 101 and IAS 41 is AASB 141.</p>
+        <p>On top of that sit the AASB 10xx standards, which have no international equivalent at all. They are where Australian practice genuinely diverges: not-for-profit income, the reporting tiers, public sector reporting and the additional disclosures the AASB requires.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="bridge">
+          <thead>
+            <tr><th scope="col">International</th><th scope="col">Australian</th><th scope="col">Title</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody id="bridge-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- =============================== DRAWER =============================== -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+  <div class="drawer-head">
+    <div class="grow">
+      <div class="drawer-codes" id="drawer-codes"></div>
+      <h2 class="drawer-title" id="drawer-title"></h2>
+    </div>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</aside>
+
+<!-- =============================== FOOTER =============================== -->
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <h4>What changed recently</h4>
+      <div class="changelog" id="changelog"></div>
+    </div>
+    <div>
+      <h4>Check the source</h4>
+      <ul id="sources"></ul>
+    </div>
+    <div>
+      <h4>How this stays current</h4>
+      <p>The catalogue is reviewed against official IASB, AASB and ISSB sources. The verification stamp shows the last recorded review. Open a standard to read its summary and follow its official source.</p>
+      <p style="margin-top:10px">The summaries here are original plain-language explanations written for working accountants. They are not the text of the standards and are not a substitute for reading it.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data/00-db.js"></script>
+<script src="data/10-ifrs.js"></script>
+<script src="data/20-ias.js"></script>
+<script src="data/30-interpretations.js"></script>
+<script src="data/40-aasb.js"></script>
+<script src="data/50-sustainability-adjacent.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/prototype.js"></script></body></html>
+

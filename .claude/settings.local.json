@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.ifrs.org)",
+      "WebFetch(domain:aasb.gov.au)",
+      "WebFetch(domain:standards.aasb.gov.au)",
+      "WebSearch"
+    ]
+  }
+}

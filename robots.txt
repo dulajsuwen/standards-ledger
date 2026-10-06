@@ -1,0 +1,7 @@
+# The Standards Ledger — a public reference. Crawl freely.
+User-agent: *
+Allow: /
+Disallow: /classic.html
+Disallow: /prototype.html
+
+Sitemap: https://dulajsuwen.github.io/standards-ledger/sitemap.xml
