@@ -1,11 +1,47 @@
 # The Standards Ledger
 
+**Live: <https://dulajsuwen.github.io/standards-ledger/>**
+
 A searchable reference covering every accounting standard that binds an Australian
 reporter — AASB, IFRS, IAS, IFRIC, SIC and sustainability — with the Australian and
-international numbering mapped side by side.
+international numbering mapped side by side. Public, no sign-in.
 
 No build step, no dependencies, no server required. It is plain HTML, CSS and
 JavaScript reading a data folder.
+
+---
+
+## How it is deployed
+
+| | |
+|---|---|
+| **Host** | GitHub Pages, from the `main` branch root |
+| **Repo** | <https://github.com/dulajsuwen/standards-ledger> (public — required for free Pages) |
+| **Publish** | `git push` to `main`. Pages redeploys in a minute or two. There is no build. |
+| **Stays current** | A scheduled task checks the IASB and AASB daily, commits, pushes and republishes the artifact |
+
+`.nojekyll` stops GitHub running Jekyll over the folder. `robots.txt` and
+`sitemap.xml` are for search engines; `classic.html` and `prototype.html` are
+excluded from indexing there and carry `noindex`.
+
+### Two front ends, one data layer
+
+- **`index.html`** — "Ledger Studio": Overview, Library, Dates, Compare, plus a
+  personal reading list held in the viewer's own browser. This is the homepage.
+- **`classic.html`** — the denser single-screen reference view. Not linked from
+  the site; kept because it is faster to scan when you know what you want.
+
+Both read the same `data/*.js`, so **adding a standard updates both**. You never
+edit the HTML to add a record.
+
+### Adding sign-in later
+
+The site is deliberately static, so nothing here blocks it. When traffic justifies
+accounts, the path is: move hosting to Vercel, add Supabase for auth and a
+`profiles` table, and keep `data/*.js` exactly as it is — the catalogue stays
+public and only the personal layer (saved standards, review marks, notes) moves
+from `localStorage` to the database. The Web App Starter Kit's `auth.md` and
+`supabase.md` pathways cover that migration.
 
 ---
 
