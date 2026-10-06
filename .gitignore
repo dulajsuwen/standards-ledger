@@ -10,3 +10,6 @@ desktop.ini
 
 # Nothing is built here — this is a dependency-free static site.
 # If the project ever moves to a bundler, add node_modules/ and dist/ below.
+
+# Machine-local Claude Code permissions
+.claude/settings.local.json
