@@ -32,7 +32,7 @@
 
 window.STANDARDS_DB = {
   meta: {
-    verified: "2026-09-29",
+    verified: "2026-10-07",
     note:
       "Summaries here are original plain-language explanations written for " +
       "working accountants. They are not the text of the standards and are not " +
