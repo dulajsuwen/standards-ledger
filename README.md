@@ -26,7 +26,7 @@ excluded from indexing there and carry `noindex`.
 
 ### Two front ends, one data layer
 
-- **`index.html`** — "Ledger Studio": Overview, Library, Dates, Compare, plus a
+- **`index.html`** — Overview, Register, Effective dates and AASB ↔ IFRS, plus a
   personal reading list held in the viewer's own browser. This is the homepage.
 - **`classic.html`** — the denser single-screen reference view. Not linked from
   the site; kept because it is faster to scan when you know what you want.
@@ -69,7 +69,9 @@ web server. Upload the whole folder as-is. There is nothing to compile.
 
 ```
 index.html                 page structure
-assets/styles.css          all styling, themed light and dark
+assets/site.css            homepage styling, themed light and dark
+assets/site.js             homepage layer: overview, section switching, reading list
+assets/styles.css          styling for classic.html only
 assets/app.js              search, filtering, the three views, the detail panel
 data/00-db.js              metadata: verified date, sources, changelog
 data/10-ifrs.js            Conceptual Framework + IFRS 1–20
