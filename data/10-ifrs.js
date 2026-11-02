@@ -336,7 +336,7 @@ window.addStandards([
   url: "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-19-subsidiaries-without-public-accountability-disclosures/"
 },
 {
-  code: "IFRS 20", au: "AASB equivalent pending", title: "Regulatory Assets and Regulatory Liabilities",
+  code: "IFRS 20", au: "AASB 20", title: "Regulatory Assets and Regulatory Liabilities",
   family: "IFRS", status: "future", issued: "2026-05",
   effective: "Annual periods beginning on or after 1 January 2029; early application permitted", effSort: "2029-01-01",
   topics: ["regulatory", "revenue"],
@@ -346,7 +346,8 @@ window.addStandards([
     "Measured using a cash-flow-based technique, discounted at the regulatory interest rate.",
     "Regulatory income and regulatory expense are presented separately, immediately below revenue.",
     "Supersedes IFRS 14 Regulatory Deferral Accounts, and unlike IFRS 14 it is open to all entities, not only first-time adopters.",
-    "Effective 1 January 2029 — a deliberately long runway given the systems work involved."
+    "Effective 1 January 2029 — a deliberately long runway given the systems work involved.",
+    "In Australia the AASB issued AASB 20 on 26 October 2026, effective for annual periods beginning on or after 1 January 2029 with early application permitted, superseding AASB 14."
   ],
   watch: "The trigger is an enforceable right or obligation arising from the regulatory agreement, not simply an expectation that the regulator will eventually allow recovery.",
   related: ["IFRS 14", "IFRS 15", "IFRS 18"],

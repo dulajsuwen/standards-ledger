@@ -32,7 +32,7 @@
 
 window.STANDARDS_DB = {
   meta: {
-    verified: "2026-10-07",
+    verified: "2026-11-02",
     note:
       "Summaries here are original plain-language explanations written for " +
       "working accountants. They are not the text of the standards and are not " +
@@ -47,6 +47,7 @@ window.STANDARDS_DB = {
     ],
     // Shown in the "What changed recently" panel. Newest first.
     changelog: [
+      { date: "2026-10-26", text: "AASB issued AASB 20 Regulatory Assets and Regulatory Liabilities, the Australian equivalent of IFRS 20, effective 1 Jan 2029. Supersedes AASB 14.", code: "AASB 20" },
       { date: "2026-09-03", text: "AASB 2026-4 gives superannuation and not-for-profit public sector entities targeted relief under AASB 18 and AASB 107 and clarifies the operating cash flow reconciliation, effective 1 Jan 2028.", code: "AASB 2026-4" },
       { date: "2026-08-13", text: "AASB 2026-3 clarifies which entities can use the fair value option for associates and joint ventures in AASB 128, effective 1 Jan 2027.", code: "AASB 2026-3" },
       { date: "2026-05-27", text: "IASB issued IFRS 20 Regulatory Assets and Regulatory Liabilities, effective 1 Jan 2029. Supersedes IFRS 14.", code: "IFRS 20" },
